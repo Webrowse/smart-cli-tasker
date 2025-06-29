@@ -2,5 +2,25 @@
   {
     "desc": "first task from smart tracker",
     "completed": false
+  },
+  {
+    "desc": "do someting",
+    "completed": false
+  },
+  {
+    "desc": "do somet",
+    "completed": true
+  },
+  {
+    "desc": "do sometin",
+    "completed": false
+  },
+  {
+    "desc": "hi",
+    "completed": true
+  },
+  {
+    "desc": "hi",
+    "completed": false
   }
 ]

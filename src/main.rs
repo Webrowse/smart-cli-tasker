@@ -8,8 +8,10 @@ use std::path::Path;
 const DATA_FILE: &str = "data/tasks.json";
 
 #[derive(Parser)]
-#[command(name = "Smart Tracker")]
+#[command(name = "Smart Tasker")]
 #[command(about = "CLI to manage tasks")]
+#[command(version)]
+#[command(author = "Adarsh")]
 struct Cli{
     #[command(subcommand)]
     command: Commands
@@ -18,10 +20,12 @@ struct Cli{
 #[derive(Subcommand)]
 enum Commands{
     Add { desc: String },
-    List
+    List,
+    Completed { id: usize },
+    Delete { id: usize }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct Task{
     desc: String,
     completed: bool
@@ -39,13 +43,37 @@ fn main(){
             });
             save_tasks(&tasks);
             println!("Task added");
+            show_tasks();
         },
         Commands::List => {
-            let tasks = load_tasks();
-            for (i, task) in tasks.iter().enumerate(){
-                let status = if task.completed { "[x]" } else { "[ ]"};
-                println!("{} {} {} ", i+1, status, task.desc);
+            show_tasks();
+        },
+        Commands::Completed { id } => {
+            let mut tasks = load_tasks();
+            if id == 0 || id > tasks.len(){
+                println!("Invalid task ID");
+                return;
             }
+            let index = id - 1;
+            tasks[index].completed = true;
+            save_tasks(&tasks);
+            show_tasks();
+        },
+        Commands::Delete { id } => {
+            let tasks = load_tasks();
+            if id == 0 || id > tasks.len(){
+                println!("Invalid input");
+                return;
+            }
+            let index = id - 1;
+            let mut after_delete: Vec<Task> = Vec::new();
+            for (i, value) in tasks.iter().clone().enumerate(){
+                if i!= index {
+                    after_delete.push(value.clone());
+                }
+            }
+            save_tasks(&after_delete);
+            show_tasks();
         }
     }
 }
@@ -70,4 +98,12 @@ fn save_tasks(tasks: &Vec<Task>) {
 
     let writer = BufWriter::new(file);
     serde_json::to_writer_pretty(writer, tasks).expect("Failed to serialise task");
+}
+
+fn show_tasks(){
+    let tasks = load_tasks();
+            for (i, task) in tasks.iter().enumerate(){
+                let status = if task.completed { "[x]" } else { "[ ]"};
+                println!("{} {} {} ", i+1, status, task.desc);
+            }
 }
