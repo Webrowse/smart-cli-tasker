@@ -1,6 +1,27 @@
 # Smart Tasker
 
-Smart Tasker is a command-line task tracker built with Rust. It lets you add, list, complete, and delete tasks directly from the terminal. All tasks are stored in a local JSON file (`data/tasks.json`), so there is no need for a database or external setup.
+[![Crates.io](https://img.shields.io/crates/v/smart-tasker)](https://crates.io/crates/smart-tasker)
+
+Smart Tasker is a fast, lightweight command-line task tracker written in Rust. It lets you add, list, complete, and delete tasks directly from the terminal. All tasks are saved locally in a JSON file (`data/tasks.json`) — no database or external setup required.
+
+---
+
+## Install via Cargo
+
+```bash
+cargo install smart-tasker
+```
+
+Once installed, use it globally:
+
+```bash
+smart-tasker add "Write documentation"
+smart-tasker list
+smart-tasker complete 2
+smart-tasker delete 1
+```
+
+---
 
 ## Features
 
@@ -8,37 +29,28 @@ Smart Tasker is a command-line task tracker built with Rust. It lets you add, li
 - List all tasks with their completion status
 - Mark tasks as completed
 - Delete tasks by ID
-- Simple and fast local storage using JSON
+- Simple local JSON storage
+
+---
 
 ## Requirements
 
-- Rust and Cargo installed  
-  (Install from https://www.rust-lang.org/tools/install)
+- [Rust and Cargo](https://www.rust-lang.org/tools/install)
 
-## How to Use
-
-```bash
-# Clone the repo
-git clone https://github.com/yourusername/smart-tasker.git
-cd smart-tasker
-
-# Run any command with cargo
-cargo run -- add "Write documentation"
-cargo run -- list
-cargo run -- complete 2
-cargo run -- delete 1
-```
+---
 
 ## Command Reference
 
-| Command             | Description                          |
-|---------------------|--------------------------------------|
-| `add "task desc"`   | Add a new task                       |
-| `list`              | Show all tasks                       |
-| `complete <id>`     | Mark the task with given ID complete |
-| `delete <id>`       | Delete the task with given ID        |
+| Command                       | Description                     |
+|------------------------------|---------------------------------|
+| `add "task desc"`            | Add a new task                  |
+| `list`                       | Show all tasks                  |
+| `complete <id>`              | Mark the task with given ID complete |
+| `delete <id>`                | Delete the task with given ID   |
 
-Task IDs are shown in the `list` output. Start from 1.
+> Task IDs are shown in the list output. They start from 1.
+
+---
 
 ## File Structure
 
@@ -52,10 +64,21 @@ data/
 └── tasks.json         # Local JSON file storing tasks
 ```
 
+---
+
+## Links
+
+- [Crates.io Package](https://crates.io/crates/smart-tasker)
+- [GitHub Releases](https://github.com/webrowse/smart-cli-tasker/releases)
+
+---
+
 ## License
 
 This project is open source and freely usable under the MIT license.  
 See `LICENSE` for details.
+
+---
 
 ## Author
 
