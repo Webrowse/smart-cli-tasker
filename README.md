@@ -9,7 +9,7 @@ Smart Tasker is a fast, lightweight command-line task tracker written in Rust. I
 ## Install via Cargo
 
 ```bash
-cargo install smart-tasker
+cargo install smart_tasker
 ```
 
 Once installed, use it globally:
