@@ -15,10 +15,10 @@ cargo install smart_tasker
 Once installed, use it globally:
 
 ```bash
-smart-tasker add "Write documentation"
-smart-tasker list
-smart-tasker complete 2
-smart-tasker delete 1
+smart_tasker add "Write documentation"
+smart_tasker list
+smart_tasker complete 2
+smart_tasker delete 1
 ```
 
 ---
