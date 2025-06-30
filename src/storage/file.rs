@@ -1,6 +1,6 @@
 use crate::models::Task;
 
-use std::fs::{File, OpenOptions};
+use std::fs::{File, OpenOptions, create_dir_all};
 use std::io::{BufReader, BufWriter};
 use std::path::Path;
 
@@ -17,6 +17,12 @@ pub fn load_tasks() -> Vec<Task> {
 }
 
 pub fn save_tasks(tasks: &Vec<Task>) {
+
+    if let Some(parent) = Path::new(DATA_FILE).parent(){
+        if !parent.exists(){
+            create_dir_all(parent).expect("Failed to create json folder");
+        }
+    }
     let file = OpenOptions::new()
         .create(true)
         .write(true)
