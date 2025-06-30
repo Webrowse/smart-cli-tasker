@@ -20,8 +20,8 @@ struct Cli {
 enum Commands {
     Add { desc: String },
     List,
-    Complete { id: usize },
-    Delete { id: usize },
+    Complete { id: i32 },
+    Delete { id: i32 },
 }
 
 fn main() {
