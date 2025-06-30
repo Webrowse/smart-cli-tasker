@@ -52,6 +52,7 @@ fn main(){
             let mut tasks = load_tasks();
             if id == 0 || id > tasks.len(){
                 println!("Invalid task ID");
+                show_tasks();
                 return;
             }
             let index = id - 1;
@@ -60,19 +61,17 @@ fn main(){
             show_tasks();
         },
         Commands::Delete { id } => {
-            let tasks = load_tasks();
+            let mut tasks = load_tasks();
             if id == 0 || id > tasks.len(){
-                println!("Invalid input");
+                println!("Invalid input, nothing was deleted, \nTry Again");
+                show_tasks();
                 return;
             }
             let index = id - 1;
-            let mut after_delete: Vec<Task> = Vec::new();
-            for (i, value) in tasks.iter().clone().enumerate(){
-                if i!= index {
-                    after_delete.push(value.clone());
-                }
-            }
-            save_tasks(&after_delete);
+            tasks = tasks.into_iter().enumerate().filter(|(i,_)| *i != index).map(|(_,task)|task).collect();
+            save_tasks(&tasks);
+            let deleted = &tasks[index].desc;
+            println!("Deleted {:?} successfully", deleted);
             show_tasks();
         }
     }

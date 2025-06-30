@@ -8,19 +8,15 @@
     "completed": false
   },
   {
-    "desc": "do somet",
-    "completed": true
-  },
-  {
-    "desc": "do sometin",
+    "desc": "abc",
     "completed": false
   },
   {
-    "desc": "hi",
-    "completed": true
+    "desc": "abcd",
+    "completed": false
   },
   {
-    "desc": "hi",
+    "desc": "abcdef",
     "completed": false
   }
 ]
