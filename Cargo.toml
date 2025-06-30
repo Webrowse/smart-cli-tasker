@@ -7,7 +7,7 @@ description = "A task tracking CLI tool written in Rust"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/Webrowse/smart-cli-tasker"
-keywords = ["cli", "task", "rust", "json", "clap", "serde"]
+keywords = ["cli", "task", "rust", "clap", "serde"]
 categories = ["command-line-utilities"]
 
 [dependencies]
