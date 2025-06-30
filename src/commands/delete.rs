@@ -7,13 +7,12 @@ pub fn delete(id: i32) {
         show_tasks();
         return;
     }
-    let index = id - 1;
+    let index = (id - 1) as usize;
     let deleted = tasks[index as usize].desc.clone();
     tasks = tasks
         .into_iter()
         .enumerate()
-        .filter(|(i, _)| *i != index as usize)
-        .map(|(_, task)| task)
+        .filter_map(|(i, task)| if i != index {Some(task)} else{None})
         .collect();
     save_tasks(&tasks);
     println!(r#"Deleted Task: "{}" successfully"#, deleted);
