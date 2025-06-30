@@ -9,14 +9,10 @@
   },
   {
     "desc": "abc",
-    "completed": false
+    "completed": true
   },
   {
     "desc": "abcdef",
     "completed": false
-  },
-  {
-    "desc": "this is to check complete and delete",
-    "completed": true
   }
 ]
