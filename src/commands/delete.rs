@@ -1,8 +1,8 @@
 use crate::storage::{load_tasks, save_tasks, show_tasks};
 
-pub fn delete(id: i32) {
+pub fn delete(id: u32) {
     let mut tasks = load_tasks();
-    if id == 0 || id > tasks.len() as i32 {
+    if id == 0 || id > tasks.len() as u32 {
         println!("Invalid input, nothing was deleted, \nTry Again");
         show_tasks();
         return;
@@ -15,6 +15,6 @@ pub fn delete(id: i32) {
         .filter_map(|(i, task)| if i != index {Some(task)} else{None})
         .collect();
     save_tasks(&tasks);
-    println!(r#"Deleted Task: "{}" successfully"#, deleted);
+    println!(r#"Deleted Task: "{}" successfully."#, deleted);
     show_tasks();
 }

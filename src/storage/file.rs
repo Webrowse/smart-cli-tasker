@@ -30,8 +30,18 @@ pub fn save_tasks(tasks: &Vec<Task>) {
 
 pub fn show_tasks() {
     let tasks = load_tasks();
+    if tasks.is_empty() {
+        println!("No task found.");
+        return;
+    }
     for (i, task) in tasks.iter().enumerate() {
         let status = if task.completed { "[x]" } else { "[ ]" };
-        println!("{} {} {} ", i + 1, status, task.desc);
+        println!("{:>3}. {:>3} {} ", i + 1, status, task.desc);
     }
+    let total = tasks.iter().filter(|t| !t.completed).count();
+    println!(
+        "\nTotal Tasks: {} | Remaining Tasks: {}\n",
+        tasks.iter().len(),
+        total
+    );
 }
