@@ -25,11 +25,11 @@ Smart Tasker is a command-line task tracker built with Rust. It lets you add, li
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/smart-tasker.git
-cd smart-tasker
-
+git clone https://github.com/Webrowse/smart-cli-tasker.git
+cd smart-cli-tasker
+```
 # Run any command with cargo
-cargo run -- add "Write documentation"
-cargo run -- list
-cargo run -- complete 2
-cargo run -- delete 1
+- cargo run -- add "Write documentation"
+- cargo run -- list
+- cargo run -- complete 2
+- cargo run -- delete 1
